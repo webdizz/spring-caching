@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.ehcache.org/v3" xmlns:jsr107="http://www.ehcache.org/v3/jsr107"
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.ehcache.org/v3"
+        xmlns:jsr107="http://www.ehcache.org/v3/jsr107"
         xsi:schemaLocation="
             http://www.ehcache.org/v3
             http://www.ehcache.org/schema/ehcache-core.xsd
@@ -9,7 +10,7 @@
         <jsr107:defaults
                 enable-management="true"
                 enable-statistics="true"
-                default-template="default" />
+                default-template="default"/>
     </service>
 
     <cache alias="name.webdizz.spring.springcaching.domain.persistence.Product"
@@ -31,6 +32,29 @@
            uses-template="entity-default">
         <heap unit="MB">20</heap>
     </cache>
+
+    <cache alias="order-query-results-region"
+           uses-template="query-default">
+    </cache>
+
+    <cache alias="default-query-results-region"
+           uses-template="query-default">
+    </cache>
+
+    <cache alias="default-update-timestamps-region">
+        <!-- Cache region to hold cached queries last updated timestamps, hence it's shouldn't expire as there are might be cached queries -->
+        <expiry>
+            <none/>
+        </expiry>
+        <heap unit="MB">10</heap>
+    </cache>
+
+    <cache-template name="query-default">
+        <expiry>
+            <tti unit="seconds">60</tti>
+        </expiry>
+        <heap unit="MB">10</heap>
+    </cache-template>
 
     <cache-template name="entity-default">
         <expiry>

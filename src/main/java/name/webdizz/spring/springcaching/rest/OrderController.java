@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class OrderController {
 
     private OrderRepository orderRepository;
-    
+
     private OrderMapper orderMapper;
 
     @Autowired
@@ -23,6 +25,11 @@ public class OrderController {
 
     @GetMapping("/order/{orderId}")
     public Order findOrder(@PathVariable("orderId") Long orderId) {
-        return orderMapper.toDto(orderRepository.getOne(orderId));
+        return orderMapper.map(orderRepository.getOne(orderId));
+    }
+
+    @GetMapping("/product/{productId}/orders")
+    public List<Order> findOrdersForProduct(@PathVariable("productId") Long productId) {
+        return orderMapper.map(orderRepository.findByItemsProductId(productId));
     }
 }
