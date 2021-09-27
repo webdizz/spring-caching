@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazelcast xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.hazelcast.com/schema/config
+http://www.hazelcast.com/schema/config/hazelcast-config-4.0.xsd">
+
+    <cluster-name>hazlecast-cluster-dev</cluster-name>
+
+    <!-- Entity-specific cache configuration    -->
+    <cache name="name.webdizz.spring.springcaching.domain.persistence.Order">
+        <eviction eviction-policy="LRU"/>
+    </cache>
+    <cache name="name.webdizz.spring.springcaching.domain.persistence.Order.items">
+        <eviction eviction-policy="LRU"/>
+    </cache>
+    <cache name="name.webdizz.spring.springcaching.domain.persistence.Product">
+        <eviction eviction-policy="LRU"/>
+    </cache>
+    <cache name="name.webdizz.spring.springcaching.domain.persistence.Item">
+        <eviction eviction-policy="LRU"/>
+    </cache>
+
+    <cache name="order-query-results-region">
+        <eviction eviction-policy="LRU"/>
+    </cache>
+
+    <cache name="default-query-results-region">
+        <eviction eviction-policy="LRU"/>
+    </cache>
+
+    <cache name="default-update-timestamps-region">
+        <eviction eviction-policy="LRU"/>
+    </cache>
+
+</hazelcast>

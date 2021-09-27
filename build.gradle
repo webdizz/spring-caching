@@ -29,9 +29,14 @@ dependencies {
 	// Spring internal cache
 	implementation 'org.springframework.boot:spring-boot-starter-cache'
 
-	// Hibernate caching options
+	// Hibernate caching option
 	implementation 'org.hibernate:hibernate-jcache'
 	implementation 'org.ehcache:ehcache'
+
+	// Hazlecast caching option
+//	implementation 'com.hazelcast:hazelcast-hibernate5:2.2.1'
+//	implementation 'com.hazelcast:hazelcast-spring:5.0'
+	implementation 'com.hazelcast:hazelcast-all:4.2.2'
 
 	runtimeOnly 'mysql:mysql-connector-java'
 
