@@ -21,6 +21,7 @@ public class Item {
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
+    @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
     private Product product;
 
     @ManyToOne

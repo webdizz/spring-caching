@@ -17,7 +17,7 @@ public class Order implements Serializable {
     @Id
     private Long id;
 
-    @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private List<Item> items;
 }
