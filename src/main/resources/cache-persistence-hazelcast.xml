@@ -4,6 +4,8 @@
            xsi:schemaLocation="http://www.hazelcast.com/schema/config
 http://www.hazelcast.com/schema/config/hazelcast-config-4.0.xsd">
 
+    <cluster-name>hazlecast-cluster-dev-persistence</cluster-name>
+
     <!-- Entity-specific cache configuration    -->
     <cache name="name.webdizz.spring.springcaching.domain.persistence.Order">
         <eviction eviction-policy="LRU"/>

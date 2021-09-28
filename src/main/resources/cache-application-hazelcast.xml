@@ -10,5 +10,4 @@ http://www.hazelcast.com/schema/config/hazelcast-config-4.0.xsd">
         <eviction eviction-policy="LRU"/>
     </cache>
 
-    <import resource="cache-persistence-hazelcast.xml"/>
 </hazelcast>
