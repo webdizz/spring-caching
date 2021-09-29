@@ -1,5 +1,6 @@
 package name.webdizz.spring.springcaching.rest;
 
+import name.webdizz.spring.springcaching.configuration.http.CacheControl;
 import name.webdizz.spring.springcaching.domain.Order;
 import name.webdizz.spring.springcaching.domain.mapper.OrderMapper;
 import name.webdizz.spring.springcaching.repository.OrderRepository;
@@ -28,12 +29,13 @@ public class OrderController {
     }
 
     @GetMapping("/order/{orderId}")
+    @CacheControl(maxAge = 100)
     public Order findOrder(@PathVariable("orderId") Long orderId) {
-        complexComputingService.compute();
         return orderMapper.map(orderRepository.getOne(orderId));
     }
 
     @GetMapping("/product/{productId}/orders")
+    @CacheControl(cachedIn = CacheControl.CachedIn.PRIVATE)
     public List<Order> findOrdersForProduct(@PathVariable("productId") Long productId) {
         complexComputingService.compute();
         return orderMapper.map(orderRepository.findByItemsProductId(productId));
