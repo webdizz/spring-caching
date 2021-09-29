@@ -35,6 +35,9 @@ dependencies {
 	// Hazelcast caching option
 	implementation 'com.hazelcast:hazelcast-all:4.2.2'
 
+	// Redis
+	implementation 'org.redisson:redisson-hibernate-53:3.16.2'
+
 	runtimeOnly 'mysql:mysql-connector-java'
 
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'

@@ -15,6 +15,9 @@ public class SpringCachingApplication {
 
         if (setActiveProfiles.contains("hazelcast")) {
             System.setProperty("javax.cache.spi.CachingProvider", "com.hazelcast.cache.impl.HazelcastServerCachingProvider");
+        } else if (setActiveProfiles.contains("redis")) {
+            System.setProperty("javax.cache.spi.CachingProvider", "org.ehcache.jsr107.EhcacheCachingProvider");
+//            System.setProperty("javax.cache.spi.CachingProvider", "org.redisson.jcache.JCachingProvider");
         } else {
             System.setProperty("javax.cache.spi.CachingProvider", "org.ehcache.jsr107.EhcacheCachingProvider");
         }
